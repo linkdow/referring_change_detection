@@ -27,7 +27,7 @@ RCDNet est un modèle de détection de changements par référence linguistique 
 - **Décodeur :** MambaDecoder avec attention croisée texte-image
 - **Inférence :** pour chaque classe *c*, le modèle prédit les pixels ayant changé *vers* ou *depuis* cette classe
 
-**Entraînement :** le modèle a été entraîné sur le jeu de données SECOND (imagerie aérienne urbaine, résolution compatible avec les orthophotos IGN), sans aucune donnée de la zone d'étude.
+**Poids utilisés :** les poids pré-entraînés fournis par les auteurs de RCDNet, entraînés sur le jeu de données SECOND (imagerie aérienne urbaine, résolution compatible avec les orthophotos IGN). Aucune donnée de la zone d'étude n'a été utilisée.
 
 **Inférence zero-shot :** aucune annotation manuelle de Saint-Denis n'a été nécessaire. Les 6 classes du jeu de données SECOND ont été appliquées directement à la zone cible.
 
