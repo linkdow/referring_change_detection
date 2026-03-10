@@ -218,7 +218,11 @@ class ChangeDataset(data.Dataset):
 
         A = self._open_image(A_path, "RGB").astype(np.float32) / 255.0
         B = self._open_image(B_path, "RGB").astype(np.float32) / 255.0
-        gt = self._open_image(gt_path, "L", dtype=np.uint8)
+        if os.path.exists(gt_path):
+            gt = self._open_image(gt_path, "L", dtype=np.uint8)
+        else:
+            # No ground truth available (inference-only mode)
+            gt = np.zeros((self.image_size[0], self.image_size[1]), dtype=np.uint8)
 
         # Normalize binary masks: convert 255 -> 1 for binary CD datasets
         # Enabled via config.normalize_binary_gt = True (e.g., LEVIR-CD, WHU-CD)

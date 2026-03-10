@@ -21,3 +21,4 @@ dist/
 .ipynb_checkpoints/
 
 data/
+credentials.txt

@@ -165,7 +165,7 @@ class CrossAttention(nn.Module):
             nn.Dropout(dropout)
         )
 
-    def forward(self, x, context=None, mask=None):
+    def forward(self, x, context=None, mask=None, chunk_size=512):
         h = self.heads
 
         q = self.to_q(x)
@@ -175,18 +175,27 @@ class CrossAttention(nn.Module):
 
         q, k, v = map(lambda t: rearrange(t, 'b n (h d) -> (b h) n d', h=h), (q, k, v))
 
-        sim = einsum('b i d, b j d -> b i j', q, k) * self.scale
+        # Chunked attention: process queries in blocks to avoid O(N²) peak memory.
+        # A 128×128 feature map has 16K tokens → full sim matrix = 8 GiB (FP32).
+        # Processing in chunks of 512 keeps peak at ~128 MB.
+        q_len = q.shape[1]
+        out = torch.zeros_like(q)
 
         if exists(mask):
             mask = rearrange(mask, 'b ... -> b (...)')
-            max_neg_value = -torch.finfo(sim.dtype).max
             mask = repeat(mask, 'b j -> (b h) () j', h=h)
-            sim.masked_fill_(~mask, max_neg_value)
 
-        # attention, what we cannot get enough of
-        attn = sim.softmax(dim=-1)
+        for start in range(0, q_len, chunk_size):
+            end = min(start + chunk_size, q_len)
+            sim = einsum('b i d, b j d -> b i j', q[:, start:end], k) * self.scale
 
-        out = einsum('b i j, b j d -> b i d', attn, v)
+            if exists(mask):
+                max_neg_value = -torch.finfo(sim.dtype).max
+                sim.masked_fill_(~mask[:, :, :sim.shape[-1]], max_neg_value)
+
+            attn = sim.softmax(dim=-1)
+            out[:, start:end] = einsum('b i j, b j d -> b i d', attn, v)
+
         out = rearrange(out, '(b h) n d -> b n (h d)', h=h)
         return self.to_out(out)
 
