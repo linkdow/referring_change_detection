@@ -1,6 +1,14 @@
 # RCDNet: Referring Change Detection Network
 
-**RCDNet** is a language-guided referring change detection model for remote sensing imagery. Given a *before* image (A), an *after* image (B), and a **text prompt** (e.g., "building", "water bodies"), it predicts **which pixels of that semantic class have changed**. By querying all classes sequentially, RCDNet produces dense **semantic change masks** that capture fine-grained land cover transitions.
+**RCDNet** est un modèle de détection de changements guidé par le langage pour l'imagerie de télédétection. À partir d'une image *avant* (A), d'une image *après* (B) et d'un **prompt textuel** (ex. : « bâtiment », « plans d'eau »), il prédit **quels pixels de cette classe sémantique ont changé**. En interrogeant toutes les classes séquentiellement, RCDNet produit des **masques de changement sémantiques denses** capturant les transitions fines d'occupation du sol.
+
+Ce dépôt est un **fork du projet original** ([yilmazkorkmaz1/referring_change_detection](https://github.com/yilmazkorkmaz1/referring_change_detection)), enrichi des contributions suivantes :
+
+- **Adaptation aux données IGN Géoplateforme** — pipeline d'inférence sur orthophotos 0,5 m/pixel via WMS public, sans réentraînement
+- **Cas d'usage concret** — détection de changements sur le Village Olympique de Saint-Denis (2021→2024), 1,50 km² détectés sur 34,67 km²
+- **Corrections techniques** — stabilité mémoire GPU (`--no-amp`), normalisation inter-domaines, alignement géométrique entre millésimes
+- **Pipeline Sentinel-2** — scripts de téléchargement et de préparation sur l'Île-de-France (point de départ avant passage à l'IGN)
+- **Documentation en français** — rapport de cas d'usage, guide de reproduction, guide de dépannage
 
 ---
 
@@ -217,13 +225,13 @@ Supports `.pt`, `.pth`, and `.safetensors` checkpoint formats.
 | `nepochs` | Total epochs | 500 |
 
 
-## Acknowledgments
+## Remerciements
 
-This work builds upon several excellent open-source projects:
+Ce travail s'appuie sur plusieurs projets open-source :
 
 - **[VMamba](https://github.com/MzeroMiko/VMamba)** - Visual State Space Models providing the backbone architecture.
 - **[Sigma](https://github.com/zifuwan/Sigma)** - Siamese Mamba Network for Multi-Modal Semantic Segmentation.
 - **[M-CD](https://github.com/JayParanjape/M-CD)** - Mamba-based Change Detection for Remote Sensing.
 - **[DDPM-CD](https://github.com/wgcban/ddpm-cd)** - Some of the data splits and preprocessing are adapted from this work on Remote Sensing Change Detection using Denoising Diffusion Probabilistic Models.
 
-We thank the authors of these projects for their valuable contributions to the community.
+Nous remercions les auteurs de ces projets pour leurs contributions à la communauté.
