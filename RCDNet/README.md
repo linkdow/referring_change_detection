@@ -6,7 +6,7 @@ Ce dépôt est un **fork du projet original** ([yilmazkorkmaz1/referring_change_
 
 - **Adaptation aux données IGN Géoplateforme** — pipeline d'inférence sur orthophotos 0,5 m/pixel via WMS public, sans réentraînement
 - **Cas d'usage concret** — détection de changements sur le Village Olympique de Saint-Denis (2021→2024), 1,50 km² détectés sur 34,67 km²
-- **Corrections techniques** — fix chunked attention dans le décodeur Mamba pour ramener la consommation mémoire GPU à un niveau viable sur tuiles 512×512, normalisation inter-domaines, alignement géométrique entre millésimes
+- **Corrections techniques** — fix chunked attention dans le décodeur Mamba pour ramener la consommation mémoire GPU à un niveau viable sur tuiles 512×512 · mode inférence sans ground truth pour les données non annotées
 - **Pipeline Sentinel-2** — scripts de téléchargement et de préparation sur l'Île-de-France (point de départ avant passage à l'IGN)
 - **Documentation en français** — rapport de cas d'usage, guide de reproduction, guide de dépannage
 

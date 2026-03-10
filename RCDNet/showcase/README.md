@@ -34,14 +34,12 @@ Les images sont automatiquement découpées en tuiles de 512 × 512 pixels.
 
 ```bash
 # Inférence sur les paires IGN
-# --no-amp requis pour la stabilité mémoire sur cette résolution
 python showcase/scripts/03_run_inference_lowmem.py \
     --config configs.config_ign_showcase \
-    --checkpoint weights/rcdnet_second.pt \
+    --checkpoint weights/SECOND-model.safetensors \
     --input_a showcase/data/A \
     --input_b showcase/data/B \
-    --output showcase/results \
-    --no-amp
+    --output showcase/results
 ```
 
 Le script traite les tuiles par lots et génère un masque de changement par classe sémantique pour chaque paire.
@@ -87,7 +85,7 @@ Fichier de configuration : [`configs/config_ign_showcase.py`](../configs/config_
 - **Taille des tuiles :** 512 × 512 pixels
 - **Normalisation :** statistiques SECOND (RGB)
 - **Modèle :** backbone VMamba-Small + décodeur Mamba
-- **Mode AMP :** désactivé (`--no-amp`) pour la stabilité mémoire
+- **Poids :** `weights/SECOND-model.safetensors` (fournis par les auteurs originaux)
 
 ---
 
@@ -100,6 +98,5 @@ Les scripts `scripts/01_extract_sentinel.py` et `scripts/02_create_pairs.py` doc
 ## Dépannage
 
 Voir [`docs/IGN_INFERENCE_TROUBLESHOOTING.md`](../docs/IGN_INFERENCE_TROUBLESHOOTING.md) pour les problèmes courants :
-- Dépassement mémoire GPU → utiliser `--no-amp`
+- Dépassement mémoire GPU → résolu par le chunked attention dans le décodeur Mamba (voir `models/decoders/attention.py`)
 - Décalage géométrique entre millésimes → alignement assuré par le WMS IGN (même bbox Lambert-93)
-- Artefacts de bord → recouvrement de 50 px entre tuiles
