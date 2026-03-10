@@ -8,7 +8,7 @@
 
 > **Fork du projet original** ([yilmazkorkmaz1/referring_change_detection](https://github.com/yilmazkorkmaz1/referring_change_detection)), enrichi d'un cas d'usage sur données **IGN Géoplateforme** : détection de changements sémantiques sur le Village Olympique de Saint-Denis (2021→2024), 1,50 km² détectés sur 34,67 km² via orthophotos 0,5 m/pixel.
 >
-> Contributions apportées : adaptation au pipeline IGN WMS · corrections de stabilité GPU · pipeline Sentinel-2 · documentation en français
+> Contributions apportées : adaptation au pipeline IGN WMS · fix chunked attention (décodeur Mamba) · pipeline Sentinel-2 · documentation en français
 >
 > → Détails : [`RCDNet/README.md`](RCDNet/README.md) · Rapport : [`RCDNet/docs/RAPPORT_IGN_VILLAGE_OLYMPIQUE.md`](RCDNet/docs/RAPPORT_IGN_VILLAGE_OLYMPIQUE.md)
 
