@@ -177,7 +177,7 @@ class CrossAttention(nn.Module):
 
         # Chunked attention: process queries in blocks to avoid O(N²) peak memory.
         # A 128×128 feature map has 16K tokens → full sim matrix = 8 GiB (FP32).
-        # Processing in chunks of 512 keeps peak at ~128 MB.
+        # Processing in chunks of 512 significantly reduces peak GPU memory usage.
         q_len = q.shape[1]
         out = torch.zeros_like(q)
 
