@@ -1,0 +1,46 @@
+================================================================================
+IGN ORTHOPHOTO CHANGE DETECTION SUMMARY
+Saint-Denis / Village Olympique (2021 → 2024)
+================================================================================
+
+OVERALL STATISTICS
+--------------------------------------------------------------------------------
+Number of patches analyzed: 529
+Total area covered: 34.67 km²
+Total changed area: 1.5036 km²
+Overall change percentage: 4.34%
+
+PER-CLASS BREAKDOWN
+--------------------------------------------------------------------------------
+
+Non-Vegetated Ground Surface:
+  Changed area: 0.7200 km²
+  Percentage: 2.08%
+  Changed pixels: 2,880,100
+
+Building:
+  Changed area: 0.4047 km²
+  Percentage: 1.17%
+  Changed pixels: 1,618,984
+
+Low Vegetation:
+  Changed area: 0.2965 km²
+  Percentage: 0.86%
+  Changed pixels: 1,186,110
+
+Water:
+  Changed area: 0.0383 km²
+  Percentage: 0.11%
+  Changed pixels: 153,167
+
+Tree:
+  Changed area: 0.0282 km²
+  Percentage: 0.08%
+  Changed pixels: 112,754
+
+Playground:
+  Changed area: 0.0158 km²
+  Percentage: 0.05%
+  Changed pixels: 63,331
+
+================================================================================

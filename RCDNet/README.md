@@ -2,6 +2,32 @@
 
 **RCDNet** is a language-guided referring change detection model for remote sensing imagery. Given a *before* image (A), an *after* image (B), and a **text prompt** (e.g., "building", "water bodies"), it predicts **which pixels of that semantic class have changed**. By querying all classes sequentially, RCDNet produces dense **semantic change masks** that capture fine-grained land cover transitions.
 
+---
+
+## 🛰️ Cas d'usage — Village Olympique, Saint-Denis (2021 → 2024)
+
+> Déployé sur les **orthophotos IGN Géoplateforme** (0,5 m/pixel, résolution 20× supérieure à Sentinel-2), couvrant la construction et la livraison du Village Olympique de Paris 2024 à Saint-Denis.
+
+![Détection de changements — Village Olympique 2021→2024](docs/assets/all_classes_best.png)
+
+### Résultats quantitatifs
+
+| Classe | Surface modifiée (km²) | % de la zone |
+|---|---|---|
+| Sol non végétalisé | 0,720 | 2,08 % |
+| Bâtiment | 0,405 | 1,17 % |
+| Végétation basse | 0,297 | 0,86 % |
+| Eau | 0,038 | 0,11 % |
+| Arbre | 0,028 | 0,08 % |
+| Terrain de jeux | 0,016 | 0,05 % |
+| **Total** | **1,50 km²** | **4,34 %** |
+
+**Couverture :** 529 paires de tuiles · 34,67 km² · 1 450 masques de changement
+
+→ Rapport technique complet : [docs/RAPPORT_IGN_VILLAGE_OLYMPIQUE.md](docs/RAPPORT_IGN_VILLAGE_OLYMPIQUE.md)
+→ Guide de reproduction : [showcase/README.md](showcase/README.md)
+
+---
 
 ## Installation
 
