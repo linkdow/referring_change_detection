@@ -101,5 +101,5 @@ Les scripts `scripts/01_extract_sentinel.py` et `scripts/02_create_pairs.py` doc
 
 Voir [`docs/IGN_INFERENCE_TROUBLESHOOTING.md`](../docs/IGN_INFERENCE_TROUBLESHOOTING.md) pour les problèmes courants :
 - Dépassement mémoire GPU → utiliser `--no-amp`
-- Décalage géométrique entre millésimes → recalage automatique intégré
+- Décalage géométrique entre millésimes → alignement assuré par le WMS IGN (même bbox Lambert-93)
 - Artefacts de bord → recouvrement de 50 px entre tuiles

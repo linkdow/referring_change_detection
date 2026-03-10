@@ -94,7 +94,7 @@ Le modèle a été entraîné sur SECOND (imagerie aérienne à résolution comp
 
 **Normalisation SECOND :** Les statistiques de normalisation du jeu d'entraînement SECOND (moyenne et écart-type par canal) ont été appliquées directement aux orthophotos IGN. Un écart de distribution colorimétrique subsiste (orthophotos IGN légèrement plus saturées), mais il n'a pas empêché une détection qualitativement correcte.
 
-**Alignement temporel :** Les deux millésimes d'orthophotos (2021 et 2024) n'étant pas produits avec les mêmes conditions d'acquisition, un recalage par homographie locale a été appliqué tuile par tuile pour minimiser les faux positifs liés aux décalages géométriques résiduels.
+**Alignement temporel :** Les deux millésimes d'orthophotos (2021 et 2024) sont tous deux géoréférencés en Lambert-93 via le service WMS IGN. Les tuiles A et B étant téléchargées sur la même bbox exacte au pixel près, l'alignement géométrique est assuré par le WMS lui-même, sans recalage supplémentaire.
 
 La procédure complète de débogage est documentée dans [`docs/IGN_INFERENCE_TROUBLESHOOTING.md`](IGN_INFERENCE_TROUBLESHOOTING.md).
 
