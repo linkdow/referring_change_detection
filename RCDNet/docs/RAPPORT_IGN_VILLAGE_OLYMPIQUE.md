@@ -9,7 +9,7 @@
 
 ## 1. Contexte
 
-L'IGN Géoplateforme met à disposition, via des services WMS publics, des orthophotos aériennes à très haute résolution couvrant l'ensemble du territoire national. Ces images, produites à 0,5 m/pixel, offrent un niveau de détail géographique nettement supérieur aux données satellitaires habituellement utilisées dans la littérature de détection de changements (Sentinel-2 : 10 m/pixel, soit une résolution 20 fois plus grossière).
+L'IGN Géoplateforme met à disposition, via des services WMS publics, des orthophotos aériennes à très haute résolution couvrant l'ensemble du territoire national. Ces images peuvent atteindre 20 cm/pixel selon le millésime et la zone. Nous nous sommes limités à **0,5 m/pixel**, résolution à laquelle le modèle RCDNet a été pré-entraîné (jeu de données SECOND), afin de minimiser le décalage de domaine. Cette résolution reste nettement supérieure aux données satellitaires habituellement utilisées dans la littérature de détection de changements (Sentinel-2 : 10 m/pixel, soit une résolution 20 fois plus grossière).
 
 Le Village Olympique de Saint-Denis constitue un terrain d'application particulièrement pertinent : entre 2021 et 2024, ce site de 52 hectares a subi une transformation urbaine majeure — démolition d'entrepôts, construction de logements, création d'espaces verts et d'équipements sportifs — avant d'accueillir plus de 14 500 athlètes lors des Jeux Olympiques de Paris 2024.
 
