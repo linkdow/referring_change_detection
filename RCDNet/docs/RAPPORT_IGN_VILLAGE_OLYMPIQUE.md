@@ -9,7 +9,7 @@
 
 ## 1. Contexte
 
-L'IGN Géoplateforme met à disposition, via des services WMS publics, des orthophotos aériennes à très haute résolution couvrant l'ensemble du territoire national. Ces images peuvent atteindre 20 cm/pixel selon le millésime et la zone. Nous nous sommes limités à **0,5 m/pixel**, résolution à laquelle le modèle RCDNet a été pré-entraîné (jeu de données SECOND), afin de minimiser le décalage de domaine. Cette résolution reste nettement supérieure aux données satellitaires habituellement utilisées dans la littérature de détection de changements (Sentinel-2 : 10 m/pixel, soit une résolution 20 fois plus grossière).
+L'IGN Géoplateforme met à disposition, via des services WMS publics, des orthophotos aériennes à très haute résolution couvrant l'ensemble du territoire national. Ces images peuvent atteindre 20 cm/pixel selon le millésime et la zone. Nous nous sommes limités à **0,5 m/pixel**, résolution à laquelle le modèle RCDNet a été pré-entraîné (jeu de données SECOND), afin de minimiser le décalage de domaine. À titre de comparaison, Sentinel-2 — couramment utilisé dans ce domaine — fournit des images RGB à 10 m/pixel, soit une résolution 20 fois plus grossière.
 
 Le Village Olympique de Saint-Denis constitue un terrain d'application particulièrement pertinent : entre 2021 et 2024, ce site de 52 hectares a subi une transformation urbaine majeure — démolition d'entrepôts, construction de logements, création d'espaces verts et d'équipements sportifs — avant d'accueillir plus de 14 500 athlètes lors des Jeux Olympiques de Paris 2024.
 
@@ -46,7 +46,7 @@ RCDNet est un modèle de détection de changements par référence linguistique 
 | Nombre de paires | 529 |
 | Accès | Service WMS public IGN Géoplateforme |
 
-Les orthophotos ont été téléchargées automatiquement via le service WMS de la Géoplateforme IGN, découpées en tuiles de 512 × 512 pixels avec un recouvrement de 50 pixels, puis alignées géographiquement avant inférence.
+Les orthophotos ont été téléchargées automatiquement via le service WMS de la Géoplateforme IGN, puis découpées en tuiles de 512 × 512 pixels avant inférence.
 
 ---
 
@@ -78,7 +78,7 @@ Les orthophotos ont été téléchargées automatiquement via le service WMS de 
 
 La classe **sol non végétalisé** domine les changements (2,08 %), ce qui est cohérent avec les phases de terrassement et de préparation des terrains observées entre 2021 et 2024. La classe **bâtiment** (1,17 %) reflète la construction des immeubles de logements du Village Olympique. La progression de la **végétation basse** (0,86 %) traduit la création d'espaces verts et de jardins sur le site.
 
-Ces résultats sont qualitativement cohérents avec la chronologie du chantier documentée par les médias et les rapports d'avancement de la Solideo (Société de livraison des ouvrages olympiques).
+Ces résultats sont qualitativement cohérents avec la transformation visible du site entre 2021 et 2024.
 
 ---
 
@@ -90,7 +90,7 @@ Le modèle a été entraîné sur SECOND (imagerie aérienne à résolution comp
 
 ### 5.2 Problèmes résolus
 
-**Chunked attention (mémoire GPU) :** L'inférence sur tuiles 512×512 avec le décodeur MambaDecoder provoquait des pics mémoire dépassant la capacité GPU disponible. La solution a consisté à désactiver le mode AMP (`--no-amp`) et à traiter les tuiles par lots réduits, ce qui a permis de faire passer l'inférence complète sans dégradation de qualité.
+**Chunked attention (mémoire GPU) :** L'inférence sur tuiles 512×512 avec le décodeur MambaDecoder provoquait des pics mémoire dépassant la capacité GPU disponible. Le mécanisme d'attention du décodeur a été modifié pour traiter les requêtes par blocs (*chunked attention*) plutôt qu'en une seule matrice O(N²), ce qui a permis de faire passer l'inférence complète sans dégradation de qualité.
 
 **Normalisation SECOND :** Les statistiques de normalisation du jeu d'entraînement SECOND (moyenne et écart-type par canal) ont été appliquées directement aux orthophotos IGN. Un écart de distribution colorimétrique subsiste (orthophotos IGN légèrement plus saturées), mais il n'a pas empêché une détection qualitativement correcte.
 
