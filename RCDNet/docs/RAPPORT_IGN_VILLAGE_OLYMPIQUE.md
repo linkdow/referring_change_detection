@@ -80,6 +80,10 @@ La classe **sol non végétalisé** domine les changements (2,08 %), ce qui est 
 
 Ces résultats sont qualitativement cohérents avec la transformation visible du site entre 2021 et 2024.
 
+### 4.3 Limites observées
+
+Comme en témoignent les visualisations, le modèle produit des détections de bonne qualité sur les classes dominantes (bâtiment, sol non végétalisé, végétation basse). Des marges de progression subsistent néanmoins : la classe **eau** est celle qui a concentré le plus d'erreurs dans ce cas d'usage. Ces erreurs sont notamment causées par la végétation aquatique ou riveraine, dont la prolifération peut modifier la couleur apparente du cours d'eau (passage d'un bleu caractéristique à un vert algal), amenant le modèle à interpréter ce changement chromatique comme un véritable changement de classe.
+
 ---
 
 ## 5. Points techniques
