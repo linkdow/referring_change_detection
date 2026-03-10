@@ -6,33 +6,38 @@
   <a href="https://huggingface.co/yilmazkorkmaz/RCDGen"><img alt="HuggingFace" src="https://img.shields.io/badge/HuggingFace-RCDGen-yellow"></a>
 </p>
 
-## Links
+> **Fork du projet original** ([yilmazkorkmaz1/referring_change_detection](https://github.com/yilmazkorkmaz1/referring_change_detection)), enrichi d'un cas d'usage sur données **IGN Géoplateforme** : détection de changements sémantiques sur le Village Olympique de Saint-Denis (2021→2024), 1,50 km² détectés sur 34,67 km² via orthophotos 0,5 m/pixel.
+>
+> Contributions apportées : adaptation au pipeline IGN WMS · corrections de stabilité GPU · pipeline Sentinel-2 · documentation en français
+>
+> → Détails : [`RCDNet/README.md`](RCDNet/README.md) · Rapport : [`RCDNet/docs/RAPPORT_IGN_VILLAGE_OLYMPIQUE.md`](RCDNet/docs/RAPPORT_IGN_VILLAGE_OLYMPIQUE.md)
 
-- **Project webpage**: [`yilmazkorkmaz1.github.io/RCD`](https://yilmazkorkmaz1.github.io/RCD/)
-- **Paper (arXiv)**: [`arxiv.org/pdf/2512.11719`](https://arxiv.org/pdf/2512.11719)
+---
 
-## Status
+## Liens
 
-- ✅ **RCDGen and RCDNet release is done.**
-- 🤗 **RCDGen pretrained weights are available:** [`yilmazkorkmaz/RCDGen`](https://huggingface.co/yilmazkorkmaz/RCDGen)
-- 🤗 **RCDNet pretrained weights are available (trained only with real datasets):** [Google Drive folder](https://drive.google.com/drive/folders/1foXpLPz3jtaQN7l6UdlDFVSgakgm6RXP?usp=share_link) (includes `SECOND-model.safetensors` and `CNAM-CD-model.safetensors`)
-- 🤗 **Synthetic datasets are available:**
-  
-  - **SECOND Synthetic:** [`yilmazkorkmaz/Synthetic_RCD_1`](https://huggingface.co/datasets/yilmazkorkmaz/Synthetic_RCD_1)
-  - **CNAM-CD Synthetic:** [`yilmazkorkmaz/Synthetic_RCD_2`](https://huggingface.co/datasets/yilmazkorkmaz/Synthetic_RCD_2)
+- **Page projet** : [`yilmazkorkmaz1.github.io/RCD`](https://yilmazkorkmaz1.github.io/RCD/)
+- **Article (arXiv)** : [`arxiv.org/pdf/2512.11719`](https://arxiv.org/pdf/2512.11719)
+
+## Statut (dépôt original)
+
+- ✅ **RCDGen et RCDNet publiés**
+- 🤗 **Poids pré-entraînés RCDGen :** [`yilmazkorkmaz/RCDGen`](https://huggingface.co/yilmazkorkmaz/RCDGen)
+- 🤗 **Poids pré-entraînés RCDNet :** [Google Drive](https://drive.google.com/drive/folders/1foXpLPz3jtaQN7l6UdlDFVSgakgm6RXP?usp=share_link) (`SECOND-model.safetensors`, `CNAM-CD-model.safetensors`)
+- 🤗 **Jeux de données synthétiques :**
+  - **SECOND Synthetic :** [`yilmazkorkmaz/Synthetic_RCD_1`](https://huggingface.co/datasets/yilmazkorkmaz/Synthetic_RCD_1)
+  - **CNAM-CD Synthetic :** [`yilmazkorkmaz/Synthetic_RCD_2`](https://huggingface.co/datasets/yilmazkorkmaz/Synthetic_RCD_2)
 
 ## RCDGen
 
-For details on running RCDGen, data preparation, and training/inference instructions, see:
-- [`RCDGen/README.md`](RCDGen/README.md)
+Voir [`RCDGen/README.md`](RCDGen/README.md) pour la préparation des données, l'entraînement et l'inférence.
 
 ## RCDNet
 
-For details on running RCDNet, data preparation, and training/evaluation instructions, see:
-- [`RCDNet/README.md`](RCDNet/README.md)
+Voir [`RCDNet/README.md`](RCDNet/README.md) pour la préparation des données, l'entraînement et l'évaluation.
 
-## Usage and citation
-You are encouraged to use and distribute this code for research and development purposes with appropriate citation:
+## Utilisation et citation
+Ce code est librement utilisable à des fins de recherche avec citation appropriée :
 
 ```bibtex
 @article{korkmaz2025referring,
